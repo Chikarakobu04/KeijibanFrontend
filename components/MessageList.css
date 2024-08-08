@@ -1,0 +1,19 @@
+/* MessageList.css */
+.message-list {
+    margin: 20px;
+  }
+  
+  .message-list h1 {
+    font-size: 2em;
+  }
+  
+  .message-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .message-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  

@@ -1,32 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import './MessageBoard.css';
 
 function MessageBoard() {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
 
-  useEffect(() => {
-    fetchMessages();
-  }, []);
-
-  const fetchMessages = () => {
-    axios.get('http://localhost:5000/messages')
-      .then(response => {
-        console.log('Fetched messages:', response.data);
-        setMessages(response.data);
-      })
-      .catch(error => console.error('Error fetching messages:', error));
-  };
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post('http://localhost:5000/messages', { text: newMessage })
-      .then(response => {
-        console.log('Message posted:', response.data);
-        setMessages(prevMessages => [...prevMessages, response.data]);
-      })
-      .catch(error => console.error('Error posting message:', error));
+    const newMsg = { text: newMessage };
+    setMessages([...messages, newMsg]);
     setNewMessage('');
   };
 

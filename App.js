@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Login from './components/login';
 import MessageBoard from './components/MessageBoard';
-import MessageList from './components/MessageList';
 import './App.css';
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+
   return (
     <div className="App">
-      <MessageBoard />
-      <MessageList />
+      {loggedIn ? (
+        <MessageBoard />
+      ) : (
+        <Login setLoggedIn={setLoggedIn} />
+      )}
     </div>
   );
 }
